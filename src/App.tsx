@@ -1,6 +1,7 @@
 import { DiMozilla, DiTerminal, DiGitBranch } from "react-icons/di";
 import { FaEarthAmericas } from 'react-icons/fa6'
 import { GiRotaryPhone } from 'react-icons/gi'
+import { TextField } from "./component/Input";
 const App = () => {
   return (
     <div className="flex flex-col justify-center items-center gap-8 h-screen">
@@ -57,6 +58,7 @@ const App = () => {
           </div>
         </div>
       </div>
+      <TextField label="Name" id="name" type="text" placeholder="Enter your name" />
     </div>
   );
 };
