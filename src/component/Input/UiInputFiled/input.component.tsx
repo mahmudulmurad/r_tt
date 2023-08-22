@@ -16,13 +16,14 @@ export const UiInputTextField: React.FC<TUiInputTextFieldProps> = ({
   type,
 }) => {
   return (
-    <Box className="w-full">
+    <Box className="w-full m-2">
       <TextField
         variant="outlined"
         placeholder={placeholder}
         id={id}
         label={label}
         type={type}
+        fullWidth
       />
     </Box>
   );
