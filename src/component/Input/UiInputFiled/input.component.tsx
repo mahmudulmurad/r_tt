@@ -1,19 +1,29 @@
-import React, { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes } from "react";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
 
-interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+interface TUiInputTextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
+  id: string;
+  type: string;
+  placeholder: string;
 }
 
-export const TextField: React.FC<TextFieldProps> = ({ label, ...rest }) => {
+export const UiInputTextField: React.FC<TUiInputTextFieldProps> = ({
+  label,
+  id,
+  placeholder,
+  type,
+}) => {
   return (
-    <div className="mb-4">
-      <label className="block text-gray-700 text-sm font-bold mb-1" htmlFor={rest.id}>
-        {label}
-      </label>
-      <input
-        className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        {...rest}
+    <Box className="w-full">
+      <TextField
+        variant="outlined"
+        placeholder={placeholder}
+        id={id}
+        label={label}
+        type={type}
       />
-    </div>
+    </Box>
   );
 };
