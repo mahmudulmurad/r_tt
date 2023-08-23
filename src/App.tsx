@@ -2,9 +2,13 @@ import { DiMozilla, DiTerminal, DiGitBranch } from "react-icons/di";
 import { FaEarthAmericas } from "react-icons/fa6";
 import { GiRotaryPhone } from "react-icons/gi";
 import { UiInputTextField } from "./component/Input";
+import configEnv from "./config/config";
+
 const App = () => {
   return (
     <>
+    <p>API Key: {configEnv.apiKey}</p>
+    <p>API Name: {configEnv.apiName}</p>
       <UiInputTextField
         label="Name"
         id="name"
