@@ -1,9 +1,9 @@
 import { DiMozilla, DiTerminal, DiGitBranch } from "react-icons/di";
 import { FaEarthAmericas } from "react-icons/fa6";
 import { GiRotaryPhone } from "react-icons/gi";
-import { UiInputTextField } from "./component/Input";
+import { UiInputTextField } from "./component";
 import configEnv from "./config/config";
-import UiSelectFiled from "./component/Input/UiSelectFiled/select.component";
+import {UiSelectFiled} from "./component";
 
 const App = () => {
   return (
