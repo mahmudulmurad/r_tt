@@ -1,6 +1,5 @@
 import React, { InputHTMLAttributes } from "react";
 import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
 
 interface TUiInputTextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -16,7 +15,6 @@ export const UiInputTextField: React.FC<TUiInputTextFieldProps> = ({
   type,
 }) => {
   return (
-    <Box className="w-full m-2">
       <TextField
         variant="outlined"
         placeholder={placeholder}
@@ -25,6 +23,5 @@ export const UiInputTextField: React.FC<TUiInputTextFieldProps> = ({
         type={type}
         fullWidth
       />
-    </Box>
   );
 };

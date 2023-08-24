@@ -3,6 +3,7 @@ import { FaEarthAmericas } from "react-icons/fa6";
 import { GiRotaryPhone } from "react-icons/gi";
 import { UiInputTextField } from "./component/Input";
 import configEnv from "./config/config";
+import UiSelectFiled from "./component/Input/UiSelectFiled/select.component";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         type="text"
         placeholder="Enter your name"
       />
+      <UiSelectFiled />
       <div className="flex flex-col justify-center items-center gap-8 h-screen">
         <div
           className="flex flex-col justify-center items-center gap-2 bg-slate-700
