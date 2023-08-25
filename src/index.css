@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../src/font/SFProDisplay-Regular.woff2') format('woff2'),
-         url('../src/font/SFProDisplay-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
+  font-family: "SF Pro Display";
+  src: url("../src/font/SFProDisplay-Regular.woff2") format("woff2"),
+    url("../src/font/SFProDisplay-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
