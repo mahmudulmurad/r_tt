@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, FormLabel } from "@mui/material";
+import { Box } from "@mui/material";
 
 export interface IUiFormLabel {
   title?: React.ReactNode;
@@ -18,17 +18,15 @@ export const UiLabelField = (props: IUiFormLabel) => {
   }
 
   return (
-    <Box>
-      <FormLabel
-        error={error}
-        className={className}
-        component={component || "label"}
-      >
-        {title}
-        <Box component="span" className="text-red pl-0.5 pr-1">
-          {content}
-        </Box>
-      </FormLabel>
+    <Box
+      error={error}
+      component={component || "label"}
+      className={`${className}`}
+    >
+      {title}
+      <Box component="span" className="text-red-500 pl-0.5 pr-1">
+        {content}
+      </Box>
     </Box>
   );
 };

@@ -1,27 +1,32 @@
 import React, { InputHTMLAttributes } from "react";
-import TextField from "@mui/material/TextField";
+import TextField, { TextFieldVariants } from "@mui/material/TextField";
 
 interface TUiInputTextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
-  id: string;
-  type: string;
-  placeholder: string;
+  label?: string;
+  id?: string;
+  type?: string;
+  placeholder?: string;
+  name: string;
+  variant: TextFieldVariants;
 }
 
 export const UiInputTextField: React.FC<TUiInputTextFieldProps> = ({
   label,
   id,
   placeholder,
-  type,
+  type = "text",
+  name,
+  variant = "outlined",
 }) => {
   return (
-      <TextField
-        variant="outlined"
-        placeholder={placeholder}
-        id={id}
-        label={label}
-        type={type}
-        fullWidth
-      />
+    <TextField
+      variant={variant}
+      name={name}
+      placeholder={placeholder}
+      id={id}
+      label={label}
+      type={type}
+      fullWidth
+    />
   );
 };
