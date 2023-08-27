@@ -1,6 +1,11 @@
 import { Box } from "@mui/material";
 import { UiLabelField } from "../../../ui";
-import { TSignUpForm, TSignUpProps, signUpFormDefaultValue, signUpFormValidation } from "./signup.decorator";
+import {
+  TSignUpForm,
+  TSignUpProps,
+  signUpFormDefaultValue,
+  signUpFormValidation,
+} from "./signup.decorator";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UiFormTextField } from "../../../ui/Form/UiFormTextField";
@@ -14,96 +19,94 @@ function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
     formState: { errors, isSubmitting },
   } = useForm<TSignUpForm>({
     resolver: zodResolver(signUpFormValidation),
-    defaultValues: signUpFormDefaultValue
-    ,
+    defaultValues: signUpFormDefaultValue,
   });
 
   const onSubmit = (value: any) => {
     console.log(value);
   };
   return (
-    <Box>
-    <UiLabelField
-      component="label"
-      title="New Registration"
-      className="text-2xl w-full flex items-center justify-center mt-10"
-    />
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Box className="my-7 w-3/4 mx-auto  text-center">
-        <UiFormTextField
-          style={{ fontSize: "8px" }}
-          control={control}
-          errors={errors}
-          name="username"
-          label="Username"
-          placeholder="Enter your username"
-          variant="standard"
-        />
-      </Box>
-      <Box className="my-7 w-3/4 mx-auto text-center">
-        <UiFormTextField
-          control={control}
-          errors={errors}
-          name="email"
-          label="Email"
-          placeholder="Enter your email"
-          type="email"
-          variant="standard"
-        />
-      </Box>
-      <Box className="my-7 w-3/4 mx-auto text-center">
-        <UiFormTextField
-          control={control}
-          errors={errors}
-          name="gender"
-          label="Gender"
-          placeholder="Select your gender"
-          type="email"
-          variant="standard"
-        />
-      </Box>
-      <Box className="my-7 w-3/4 mx-auto text-center">
-        <UiFormTextField
-          control={control}
-          errors={errors}
-          name="age"
-          label="D.O.B"
-          placeholder=""
-          type="date"
-          variant="standard"
-        />
-      </Box>
-      <Box className="my-7 w-3/4 mx-auto text-center">
-        <UiFormTextField
-          control={control}
-          errors={errors}
-          name="password"
-          label="Password"
-          placeholder="Enter your password"
-          type="password"
-          variant="standard"
-        />
-      </Box>
-
-
-      <Box className="my-4 mx-auto w-1/2 text-center transition-all duration-300 transform hover:scale-105">
-        <UiButton
-          onClick={handleSubmit(onSubmit)}
-          title="Sign up"
-          type="submit"
-          fullWidth
-          isLoading={isSubmitting}
-          color="secondary"
-          style={{ borderRadius: "20px" }}
-        />
-      </Box>
-
+    <Box className="flex flex-col justify-center items-center w-full h-full">
       <UiLabelField
+        component="label"
+        title="New Registration"
+        className="text-xl mt-4"
+      />
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col gap-2 justify-center items-center w-full"
+      >
+        <Box className="w-3/4">
+          <UiFormTextField
+            control={control}
+            errors={errors}
+            name="username"
+            label="username"
+            placeholder="Enter your username"
+            variant="standard"
+          />
+        </Box>
+        <Box className="w-3/4">
+          <UiFormTextField
+            control={control}
+            errors={errors}
+            name="email"
+            label="email"
+            placeholder="enter your email"
+            type="email"
+            variant="standard"
+          />
+        </Box>
+        <Box className="w-3/4 flex justify-between items-center gap-2">
+          <UiFormTextField
+            control={control}
+            errors={errors}
+            name="gender"
+            label="gender"
+            placeholder="select your gender"
+            type="email"
+            variant="standard"
+          />
+          <UiFormTextField
+            control={control}
+            errors={errors}
+            name="age"
+            label="D.O.B"
+            placeholder=""
+            type="date"
+            variant="standard"
+          />
+        </Box>
+        <Box className="w-3/4">
+          <UiFormTextField
+            control={control}
+            errors={errors}
+            name="password"
+            label="password"
+            placeholder="enter your password"
+            type="password"
+            variant="standard"
+          />
+        </Box>
+
+        <Box className="my-2 w-1/2 transition-all duration-300 transform hover:scale-105">
+          <UiButton
+            onClick={handleSubmit(onSubmit)}
+            title="sign up"
+            type="submit"
+            fullWidth
+            isLoading={isSubmitting}
+            color="secondary"
+            style={{ borderRadius: "20px" }}
+          />
+        </Box>
+
+        <UiLabelField
           title="Or sign up using"
-          className="mx-4 text-xs flex items-center justify-center text-zinc-500"
+          className="text-xs text-zinc-500"
         />
 
-        <Box className="m-4 flex justify-center items-center gap-2">
+        <Box className="my-2 flex justify-center items-center gap-2">
           <Box
             className="bg-orange-700 w-7 h-7 rounded-full flex justify-center items-center
            transition-all duration-300 transform hover:scale-125"
@@ -123,22 +126,21 @@ function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
             <FaTwitter className="text-white text-md cursor-pointer" />
           </Box>
         </Box>
-    
 
-      <UiLabelField
-        title="Or login using"
-        className="mx-4 text-xs flex items-center justify-center text-zinc-500"
-      />
-
-      <Box className="m-4 text-center">
-        <UiButton
-          title="login"
-          onClick={() => authTypeChange("login")}
-          variant="text"
+        <UiLabelField
+          title="Or login using"
+          className="text-xs text-zinc-500"
         />
-      </Box>
-    </form>
-  </Box>
+
+        <Box className="text-center">
+          <UiButton
+            title="login"
+            onClick={() => authTypeChange("login")}
+            variant="text"
+          />
+        </Box>
+      </form>
+    </Box>
   );
 }
 

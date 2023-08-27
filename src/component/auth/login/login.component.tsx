@@ -27,43 +27,41 @@ function LoginComponent({ authTypeChange, errorState }: TSignInProps) {
   };
 
   return (
-    <Box>
-      <UiLabelField
-        component="label"
-        title="Login"
-        className="text-2xl w-full flex items-center justify-center mt-10"
-      />
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Box className="my-7 w-3/4 mx-auto  text-center">
+    <Box className="flex flex-col justify-center items-center w-full h-full">
+      <UiLabelField component="label" title="Login" className="text-xl mt-4" />
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col gap-2 justify-center items-center w-full"
+      >
+        <Box className="w-3/4">
           <UiFormTextField
-            style={{ fontSize: "8px" }}
             control={control}
             errors={errors}
             name="username"
-            label="Username"
+            label="username"
             placeholder="Enter your username"
             variant="standard"
           />
         </Box>
-        <Box className="my-7 w-3/4 mx-auto text-center">
+        <Box className="w-3/4">
           <UiFormTextField
             control={control}
             errors={errors}
             name="password"
-            label="Password"
+            label="password"
             placeholder="Enter your password"
             type="password"
             variant="standard"
           />
         </Box>
-        <Box className="my-7 w-3/4 mx-auto text-right ">
+        <Box className="w-3/4 mx-auto text-right">
           <UiLabelField
             title="Forgot password?"
             className="text-xs text-zinc-500 cursor-pointer hover:text-green-500"
           />
         </Box>
 
-        <Box className="my-4 mx-auto w-1/2 text-center transition-all duration-300 transform hover:scale-105">
+        <Box className="my-3 w-1/2 transition-all duration-300 transform hover:scale-105">
           <UiButton
             onClick={handleSubmit(onSubmit)}
             title="login"
@@ -71,16 +69,16 @@ function LoginComponent({ authTypeChange, errorState }: TSignInProps) {
             fullWidth
             isLoading={isSubmitting}
             color="secondary"
-            style={{ borderRadius: "20px" }}
+            style={{ borderRadius: "20px", fontSize: "12px" }}
           />
         </Box>
 
         <UiLabelField
           title="Or sign up using"
-          className="mx-4 mt-12 text-xs flex items-center justify-center text-zinc-500"
+          className="text-xs text-zinc-500"
         />
 
-        <Box className="m-4 flex justify-center items-center gap-2">
+        <Box className="mb-4 flex justify-center items-center gap-2">
           <Box
             className="bg-orange-700 w-7 h-7 rounded-full flex justify-center items-center
            transition-all duration-300 transform hover:scale-125"
@@ -103,16 +101,14 @@ function LoginComponent({ authTypeChange, errorState }: TSignInProps) {
 
         <UiLabelField
           title="Or sign up using"
-          className="mx-4 mt-12 text-xs flex items-center justify-center text-zinc-500"
+          className="mt-4 text-xs text-zinc-500"
         />
 
-        <Box className="m-4 text-center">
-          <UiButton
-            title="signUp"
-            onClick={() => authTypeChange("signup")}
-            variant="text"
-          />
-        </Box>
+        <UiButton
+          title="signUp"
+          onClick={() => authTypeChange("signup")}
+          variant="text"
+        />
       </form>
     </Box>
   );

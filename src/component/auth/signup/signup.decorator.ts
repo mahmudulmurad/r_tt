@@ -35,7 +35,7 @@ const passwordRegex =
 
 // Sign in form data validation
 export const signUpFormValidation = z.object({
-  username: z.string().min(4, "Username must be at least 4 characters").max(20),
+  username: z.string().min(4, "min 4 characters required").max(20),
   email: z.string().email(),
   gender: z.nativeEnum(EGENDER).refine(
     (value) => {
@@ -48,15 +48,16 @@ export const signUpFormValidation = z.object({
       const birthDate = new Date(value);
       const currentDate = new Date();
       const age = currentDate.getFullYear() - birthDate.getFullYear();
-
-      return age >= 18;
+      return age >= 16;
     },
     {
-      message: "You must be at least 18 years old.",
+      message: "16+ required",
     }
   ),
-  password: z.string().refine((value) => passwordRegex.test(value), {
-    message:
-      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.",
-  }),
+  password: z
+    .string()
+    .min(8, "min 8 characters required")
+    .refine((value) => passwordRegex.test(value), {
+      message: "required capital,small,number & special character",
+    }),
 });

@@ -1,12 +1,14 @@
 import React, { InputHTMLAttributes } from "react";
 import TextField, { TextFieldVariants } from "@mui/material/TextField";
 import { FieldErrors } from "react-hook-form";
-import { Box } from "@mui/material";
+import { Box, SxProps, Theme } from "@mui/material";
 import { UiFormHelperText } from "../UiHelpertext/UiHelperText.component";
 import { UiIcon } from "../UiIcon/UiIcon.component";
+import { customeStyle } from "./textField.style";
 export interface IUiInputTextFieldProps
   extends InputHTMLAttributes<HTMLInputElement> {
   style?: React.CSSProperties;
+  sx?: SxProps<Theme>;
   label?: string;
   id?: string;
   type?: string;
@@ -35,7 +37,7 @@ export const UiInputTextField: React.FC<IUiInputTextFieldProps> = ({
   return (
     <>
       <TextField
-        style={{ ...style }}
+        sx={customeStyle}
         variant={variant}
         name={name}
         placeholder={placeholder}

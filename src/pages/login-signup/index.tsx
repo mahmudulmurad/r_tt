@@ -7,7 +7,7 @@ const LoginSignup = () => {
       className="flex justify-center items-center h-screen bg-gradient-to-r
      from-violet-500 to-fuchsia-500"
     >
-      <Box className=" h-3/4 w-1/4 bg-white drop-shadow-lg rounded-lg">
+      <Box className="h-9/10 w-1/4 bg-white drop-shadow-lg rounded-lg">
         <Auth />
       </Box>
     </Box>

@@ -1,17 +1,17 @@
-import Button from '@mui/material/Button';
-import CircularProgress from '@mui/material/CircularProgress';
-import * as React from 'react';
-import { useMemo } from 'react';
-import { TUiColor, TVariant } from './button.decorator';
-import { Box } from '@mui/material';
+import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
+import * as React from "react";
+import { useMemo } from "react";
+import { TUiColor, TVariant } from "./button.decorator";
+import { Box } from "@mui/material";
 
 /* eslint-disable-next-line */
 export interface IUiButtonProps {
   id?: string;
   title?: React.ReactNode;
   color?: TUiColor;
-  type?: 'button' | 'submit';
-  size?: 'small' | 'medium' | 'large';
+  type?: "button" | "submit";
+  size?: "small" | "medium" | "large";
   variant?: TVariant;
   disabled?: boolean;
   isLoading?: boolean;
@@ -26,30 +26,30 @@ export interface IUiButtonProps {
 
 const settings: Record<string, any> = {
   text: {
-    color: '#28A9E1',
+    color: "#28A9E1",
   },
   outlined: {
-    color: '#28A9E1',
+    color: "#28A9E1",
     warning: {
-      color: '#warning',
+      color: "#warning",
     },
     success: {
-      color: '#success',
+      color: "#success",
     },
     error: {
-      color: '#error',
+      color: "#error",
     },
     secondary: {
-      color: '#secondary',
+      color: "#secondary",
     },
     info: {
-      color: '#info',
+      color: "#info",
     },
   },
   contained: {
-    color: '#fff',
+    color: "#fff",
     primary: {
-      color: '#fff',
+      color: "#fff",
     },
   },
 };
@@ -76,9 +76,9 @@ const getSettings = (
 export function UiButton(props: IUiButtonProps) {
   const {
     id,
-    color = 'primary',
-    size = 'medium',
-    variant = 'contained',
+    color = "primary",
+    size = "medium",
+    variant = "contained",
     endIcon,
     startIcon,
     isLoading,
@@ -89,7 +89,7 @@ export function UiButton(props: IUiButtonProps) {
     style,
     onClick,
     type,
-    className
+    className,
   } = props;
 
   const startIconComponent = useMemo(() => {
@@ -97,24 +97,30 @@ export function UiButton(props: IUiButtonProps) {
   }, [isLoading, startIcon, color]);
 
   return (
-    <Box className={`mt-1 ${className} normal-case ${getSettings('color', color, variant)}`}>
-    <Button
-      id={id}
-      type={type}
-      variant={variant}
-      color={color}
-      endIcon={endIcon}
-      startIcon={startIconComponent}
-      size={size}
-      href={href}
-      disabled={disabled || isLoading}
-      fullWidth={fullWidth}
-      style={{ ...style }}
-      onClick={onClick}
-      className={className}
+    <Box
+      className={`mt-1 ${className} normal-case ${getSettings(
+        "color",
+        color,
+        variant
+      )}`}
     >
-      {title}
-    </Button>
+      <Button
+        id={id}
+        type={type}
+        variant={variant}
+        color={color}
+        endIcon={endIcon}
+        startIcon={startIconComponent}
+        size={size}
+        href={href}
+        disabled={disabled || isLoading}
+        fullWidth={fullWidth}
+        style={{ ...style }}
+        onClick={onClick}
+        className={className}
+      >
+        {title}
+      </Button>
     </Box>
   );
 }
