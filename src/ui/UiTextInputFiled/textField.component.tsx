@@ -4,9 +4,9 @@ import { FieldErrors } from "react-hook-form";
 import { Box } from "@mui/material";
 import { UiFormHelperText } from "../UiHelpertext/UiHelperText.component";
 import { UiIcon } from "../UiIcon/UiIcon.component";
-
 export interface IUiInputTextFieldProps
   extends InputHTMLAttributes<HTMLInputElement> {
+  style?: React.CSSProperties;
   label?: string;
   id?: string;
   type?: string;
@@ -21,6 +21,7 @@ export interface IUiInputTextFieldProps
 }
 
 export const UiInputTextField: React.FC<IUiInputTextFieldProps> = ({
+  style,
   label,
   name,
   id,
@@ -34,6 +35,7 @@ export const UiInputTextField: React.FC<IUiInputTextFieldProps> = ({
   return (
     <>
       <TextField
+        style={{ ...style }}
         variant={variant}
         name={name}
         placeholder={placeholder}
@@ -44,6 +46,9 @@ export const UiInputTextField: React.FC<IUiInputTextFieldProps> = ({
         error={error}
         helperText={undefined}
         onChange={onChange}
+        /* InputLabelProps={{
+          style: { top: '-0.9rem' },
+        }} */
       />
       {helperText && (
         <Box

@@ -31,8 +31,7 @@ export function UiFormTextField<
 >(props: IUiFormTextFieldProps<TFormType, TName>) {
   const error = get(props.errors || {}, props.name);
   const { onEnter, prefix, helperText, onChange } = props;
-  console.log({ error });
-  console.log('props',props.errors);
+ 
 
   return (
     <Controller

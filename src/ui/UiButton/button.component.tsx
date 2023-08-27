@@ -89,17 +89,18 @@ export function UiButton(props: IUiButtonProps) {
     style,
     onClick,
     type,
-    className,
+    className
   } = props;
+
   const startIconComponent = useMemo(() => {
     return isLoading ? <CircularProgress size={15} color={color} /> : startIcon;
   }, [isLoading, startIcon, color]);
+
   return (
-    <Box className={`mt-1 normal-case ${getSettings('color', color, variant)}`}>
+    <Box className={`mt-1 ${className} normal-case ${getSettings('color', color, variant)}`}>
     <Button
       id={id}
       type={type}
-      className={className}
       variant={variant}
       color={color}
       endIcon={endIcon}
@@ -110,6 +111,7 @@ export function UiButton(props: IUiButtonProps) {
       fullWidth={fullWidth}
       style={{ ...style }}
       onClick={onClick}
+      className={className}
     >
       {title}
     </Button>
