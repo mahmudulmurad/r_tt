@@ -1,12 +1,13 @@
 import { IErrorError } from "../../../common/decorator";
 import { TState } from "../../../common/decorator/useStateDecorator/useState.decorator";
 import { TAuthType } from "../auth.type";
-import { z } from "zod";
+import * as z from "zod";
 
 export type TSignInProps = {
   authTypeChange: (type: TAuthType) => void;
   errorState: TState<IErrorError | null>;
 };
+
 export type TSignInForm = {
   username: string;
   password: string;
@@ -18,15 +19,7 @@ export const signInFormDefaultValue: TSignInForm = {
   password: "",
 };
 // Sign in form data validation
-export const signInFormValidation = z.object({
-  username: z.string({
-    required_error: "Username is required",
-    invalid_type_error: "Username must be a string",
-  }),
-  password: z
-    .string({
-      required_error: "Password is required",
-      invalid_type_error: "Password must be a string",
-    })
-    .length(8, { message: "Must be exactly 8 characters long" }),
+export const signInFormValidation =z.object({
+  username: z.string().min(4, 'Username must be at least 4 characters').max(20),
+  password: z.string().min(6, 'Password must be at least 6 characters'),
 });
