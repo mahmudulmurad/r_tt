@@ -1,7 +1,8 @@
-import { IErrorError } from "../../../common/decorator";
-import { TState } from "../../../common/decorator/useStateDecorator/useState.decorator";
+
+import { passwordRegex } from "common/utlis";
 import { TAuthType } from "../auth.type";
 import  {z} from "zod";
+import { IErrorError, TState } from "common/decorator";
 
 export type TSignInProps = {
   authTypeChange: (type: TAuthType) => void;
@@ -20,6 +21,11 @@ export const signInFormDefaultValue: TSignInForm = {
 };
 // Sign in form data validation
 export const signInFormValidation =z.object({
-  username: z.string().min(4, 'Username must be at least 4 characters').max(20),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
+  username: z.string().min(4, 'min 4 characters required').max(20),
+  password: z
+  .string()
+  .min(8, "min 8 characters required")
+  .refine((value) => passwordRegex.test(value), {
+    message: "required capital,small,number & special character",
+  }),
 });

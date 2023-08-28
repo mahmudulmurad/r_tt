@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import { UiLabelField } from "../../../ui";
 import {
   TSignInForm,
   TSignInProps,
@@ -8,9 +7,9 @@ import {
 } from "./login.decorator";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UiButton } from "../../../ui/UiButton/button.component";
-import { UiFormTextField } from "../../../ui/Form/UiFormTextField";
 import { FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa6";
+import { UiButton, UiLabelField } from "ui/common";
+import { UiFormTextField } from "ui/form";
 
 function LoginComponent({ authTypeChange, errorState }: TSignInProps) {
   const {

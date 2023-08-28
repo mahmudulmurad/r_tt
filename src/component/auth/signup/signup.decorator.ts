@@ -1,13 +1,11 @@
-import { IErrorError } from "../../../common/decorator";
-import { TState } from "../../../common/decorator/useStateDecorator/useState.decorator";
+
+import { IErrorError, TState } from "common/decorator";
 import { TAuthTypeChange } from "../auth.type";
 import { z } from "zod";
+import { EGENDER } from "common/enums";
+import { passwordRegex } from "common/utlis";
 
-export enum EGENDER {
-  MALE = "MALE",
-  FEMALE = "FEMALE",
-  OTHER = "OTHER",
-}
+
 
 export type TSignUpProps = TAuthTypeChange & {
   errorState: TState<IErrorError | null>;
@@ -30,8 +28,7 @@ export const signUpFormDefaultValue: TSignUpForm = {
   password: "",
 };
 
-const passwordRegex =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+
 
 // Sign in form data validation
 export const signUpFormValidation = z.object({

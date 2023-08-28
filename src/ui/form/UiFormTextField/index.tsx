@@ -10,7 +10,7 @@ import {
 import {
   IUiInputTextFieldProps,
   UiInputTextField,
-} from "../../UiTextInputFiled/textField.component";
+} from "../../common/UiTextInputFiled/textField.component";
 
 interface IUiFormTextFieldProps<
   TFormType extends FieldValues,

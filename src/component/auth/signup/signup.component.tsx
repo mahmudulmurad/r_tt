@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import { UiLabelField } from "../../../ui";
 import {
   TSignUpForm,
   TSignUpProps,
@@ -8,9 +7,9 @@ import {
 } from "./signup.decorator";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UiFormTextField } from "../../../ui/Form/UiFormTextField";
-import { UiButton } from "../../../ui/UiButton/button.component";
 import { FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa6";
+import { UiFormTextField } from "ui/form";
+import { UiButton, UiLabelField } from "ui/common";
 
 function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
   const {
@@ -57,7 +56,7 @@ function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
             variant="standard"
           />
         </Box>
-        <Box className="w-3/4 flex justify-between items-center gap-2">
+        <Box className="w-3/4">
           <UiFormTextField
             control={control}
             errors={errors}
@@ -67,6 +66,8 @@ function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
             type="email"
             variant="standard"
           />
+        </Box>
+        <Box className="w-3/4">
           <UiFormTextField
             control={control}
             errors={errors}
