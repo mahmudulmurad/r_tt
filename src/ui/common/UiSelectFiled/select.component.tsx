@@ -1,31 +1,50 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 
-export function UiSelectFiled() {
-  const [age, setAge] = React.useState('');
+type IUiOptions = {
+  id: string | number;
+  title: string;
+};
+
+export interface IUiInputSelectFieldProps
+  extends React.InputHTMLAttributes<HTMLSelectElement> {
+  label: string;
+  id?: string;
+  type?: string;
+  placeholder?: string;
+  name?: string;
+  variant?: "outlined" | "filled" | "standard";
+  options?: Record<string, any>[] | IUiOptions[];
+}
+
+export function UiSelectFiled(props: IUiInputSelectFieldProps) {
+  const { variant, options,label } = props;
+  const [data, setData] = React.useState("");
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
+    setData(event.target.value as string);
   };
 
   return (
     <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+      <FormControl fullWidth variant={variant}>
+        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
-          label="Age"
+          value={data}
+          label={label}
           onChange={handleChange}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {options?.map((option) => (
+            <MenuItem key={option['id']} value={option['id']}>
+              {option['title']}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </Box>

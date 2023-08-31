@@ -9,7 +9,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa6";
 import { UiFormTextField } from "ui/form";
-import { UiButton, UiLabelField } from "ui/common";
+import { UiButton, UiLabelField, UiSelectFiled } from "ui/common";
+import { EGENDER } from "common/enums";
+import { enumToList } from "services";
 
 function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
   const {
@@ -65,6 +67,13 @@ function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
             placeholder="select your gender"
             type="email"
             variant="standard"
+          />
+        </Box>
+        <Box className="w-3/4">
+          <UiSelectFiled
+            variant="standard"
+            label="Gender"
+            options={enumToList(EGENDER)}
           />
         </Box>
         <Box className="w-3/4">
