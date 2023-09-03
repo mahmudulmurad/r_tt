@@ -14,7 +14,7 @@ export type TSignUpProps = TAuthTypeChange & {
 export type TSignUpForm = {
   username: string;
   email: string;
-  gender: string;
+  gender: EGENDER | null;
   age: string;
   password: string;
 };
@@ -23,7 +23,7 @@ export type TSignUpForm = {
 export const signUpFormDefaultValue: TSignUpForm = {
   username: "",
   email: "",
-  gender: EGENDER.MALE,
+  gender: null,
   age: "",
   password: "",
 };

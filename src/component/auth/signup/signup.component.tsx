@@ -8,8 +8,8 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa6";
-import { UiFormTextField } from "ui/form";
-import { UiButton, UiLabelField, UiSelectFiled } from "ui/common";
+import { UiFormTextField, UiFromSelectField } from "ui/form";
+import { UiButton, UiLabelField } from "ui/common";
 import { EGENDER } from "common/enums";
 import { enumToList } from "services";
 
@@ -22,10 +22,12 @@ function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
     resolver: zodResolver(signUpFormValidation),
     defaultValues: signUpFormDefaultValue,
   });
+  
 
-  const onSubmit = (value: any) => {
+  const onSubmit = (value: TSignUpForm) => {
     console.log(value);
   };
+
   return (
     <Box className="flex flex-col justify-center items-center w-full h-full">
       <UiLabelField
@@ -42,7 +44,7 @@ function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
             control={control}
             errors={errors}
             name="username"
-            label="username"
+            label="Username"
             placeholder="Enter your username"
             variant="standard"
           />
@@ -52,25 +54,17 @@ function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
             control={control}
             errors={errors}
             name="email"
-            label="email"
+            label="Email"
             placeholder="enter your email"
             type="email"
             variant="standard"
           />
         </Box>
         <Box className="w-3/4">
-          <UiFormTextField
+          <UiFromSelectField
             control={control}
             errors={errors}
             name="gender"
-            label="gender"
-            placeholder="select your gender"
-            type="email"
-            variant="standard"
-          />
-        </Box>
-        <Box className="w-3/4">
-          <UiSelectFiled
             variant="standard"
             label="Gender"
             options={enumToList(EGENDER)}
@@ -87,12 +81,13 @@ function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
             variant="standard"
           />
         </Box>
+
         <Box className="w-3/4">
           <UiFormTextField
             control={control}
             errors={errors}
             name="password"
-            label="password"
+            label="Password"
             placeholder="enter your password"
             type="password"
             variant="standard"

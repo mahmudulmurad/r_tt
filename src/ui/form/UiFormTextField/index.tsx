@@ -19,7 +19,6 @@ interface IUiFormTextFieldProps<
   name: TName;
   control: Control<TFormType>;
   errors?: FieldErrors<TFormType>;
-  prefix?: string;
   helperText?: string;
   onChange?: React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>;
   onEnter?: React.KeyboardEventHandler<HTMLTextAreaElement | HTMLInputElement>;
@@ -30,7 +29,7 @@ export function UiFormTextField<
   TName extends FieldPath<TFormType>
 >(props: IUiFormTextFieldProps<TFormType, TName>) {
   const error = get(props.errors || {}, props.name);
-  const { onEnter, prefix, helperText, onChange } = props;
+  const { onEnter, helperText, onChange } = props;
  
 
   return (
@@ -55,30 +54,7 @@ export function UiFormTextField<
               if (onChange) {
                 onChange(event);
               }
-              if (prefix) {
-                let value: string | number = event.target.value;
-                if (typeof value === "string") {
-                  if (
-                    (prefix && value.indexOf(prefix) !== -1) ||
-                    value.indexOf(prefix.slice(0, prefix?.length - 1)) !== -1
-                  ) {
-                    value = prefix + value.slice(prefix?.length);
-                  } else {
-                    value = prefix + value;
-                  }
-                }
-
-                const updatedEvent = {
-                  ...event,
-                  target: {
-                    ...event.target,
-                    value: value,
-                  },
-                };
-                field.onChange(updatedEvent);
-              } else {
-                field.onChange(event);
-              }
+              field.onChange(event);
             }}
           />
         );

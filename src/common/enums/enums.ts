@@ -3,3 +3,7 @@ export enum EGENDER {
     FEMALE = "FEMALE",
     OTHER = "OTHER",
   }
+
+  export enum EUnknown {
+    UNKNOWN = -1,
+  }

@@ -10,39 +10,78 @@ type IUiOptions = {
   title: string;
 };
 
-export interface IUiInputSelectFieldProps
-  extends React.InputHTMLAttributes<HTMLSelectElement> {
+export interface IUiSelectFieldProps {
+  error?: boolean;
+  value?: unknown;
   label: string;
   id?: string;
   type?: string;
   placeholder?: string;
   name?: string;
   variant?: "outlined" | "filled" | "standard";
-  options?: Record<string, any>[] | IUiOptions[];
+  options: Record<string, any>[] | IUiOptions[];
+  onChange?: (
+    event: SelectChangeEvent<unknown>,
+    child: React.ReactNode,
+    data?: unknown
+  ) => void;
+  selectedData?: boolean;
+  isLoading?: boolean;
+  required?: boolean;
 }
 
-export function UiSelectFiled(props: IUiInputSelectFieldProps) {
-  const { variant, options,label } = props;
-  const [data, setData] = React.useState("");
+export function UiSelectFiled(props: IUiSelectFieldProps) {
+  const {
+    variant,
+    options,
+    label,
+    value,
+    onChange,
+    selectedData = false,
+    error,
+    required,
+  } = props;
+  let optionId = "id";
+  let optionLabel = "title";
+  const optionsList: Record<string | number, any>[] = options;
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setData(event.target.value as string);
-  };
-
+  const getSelectedData = (selectedId: unknown) =>
+    selectedId
+      ? options?.filter(
+          (option: Record<string, any> | IUiOptions) =>
+            option?.["id"] === selectedId
+        )[0]
+      : {};
+      
   return (
     <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth variant={variant}>
+      <FormControl
+        fullWidth
+        variant={variant}
+        error={error}
+        required={required}
+      >
         <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={data}
+          value={value === null ? "" : value}
           label={label}
-          onChange={handleChange}
+          onChange={(e, child) => {
+            if (onChange) {
+              onChange(
+                e,
+                child,
+                selectedData && !!e.target.value
+                  ? getSelectedData(e.target.value)
+                  : {}
+              );
+            }
+          }}
         >
-          {options?.map((option) => (
-            <MenuItem key={option['id']} value={option['id']}>
-              {option['title']}
+          {optionsList?.map((option: Record<string | number, any>) => (
+            <MenuItem key={option[optionId]} value={option[optionId]}>
+              {option[optionLabel]}
             </MenuItem>
           ))}
         </Select>
