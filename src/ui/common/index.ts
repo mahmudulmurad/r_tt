@@ -4,3 +4,4 @@ export * from './UiIcon/UiIcon.component'
 export * from "./UiSelectFiled/select.component";
 export * from "./UiTextInputFiled/textField.component";
 export * from "./UiLabel/label.component";
+export * from './UiDatePicker/datepicker.component'

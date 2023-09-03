@@ -8,7 +8,7 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa6";
-import { UiFormTextField, UiFromSelectField } from "ui/form";
+import { UiFormDatePicker, UiFormTextField, UiFromSelectField } from "ui/form";
 import { UiButton, UiLabelField } from "ui/common";
 import { EGENDER } from "common/enums";
 import { enumToList } from "services";
@@ -22,7 +22,6 @@ function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
     resolver: zodResolver(signUpFormValidation),
     defaultValues: signUpFormDefaultValue,
   });
-  
 
   const onSubmit = (value: TSignUpForm) => {
     console.log(value);
@@ -71,7 +70,7 @@ function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
           />
         </Box>
         <Box className="w-3/4">
-          <UiFormTextField
+          {/* <UiFormTextField
             control={control}
             errors={errors}
             name="age"
@@ -79,6 +78,15 @@ function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
             placeholder=""
             type="date"
             variant="standard"
+          /> */}
+
+          <UiFormDatePicker
+            control={control}
+            errors={errors}
+            name="age"
+            label="D.O.B"
+            variant="standard"
+            fullWidth
           />
         </Box>
 
