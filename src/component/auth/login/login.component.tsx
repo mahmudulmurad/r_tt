@@ -27,19 +27,19 @@ function LoginComponent({ authTypeChange, errorState }: TSignInProps) {
 
   return (
     <Box className="flex flex-col justify-center items-center w-full h-full">
-      <UiLabelField component="label" title="Login" className="text-xl mt-4" />
+      <UiLabelField component="label" title="Login" className="text-xl my-4" />
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-2 justify-center items-center w-full"
+        className="flex flex-col gap-3 justify-center items-center w-full mb-2"
       >
         <Box className="w-3/4">
           <UiFormTextField
             control={control}
             errors={errors}
             name="username"
-            label="username"
-            placeholder="Enter your username"
-            variant="standard"
+            label="Username"
+            placeholder="enter your username"
+            variant="outlined"
           />
         </Box>
         <Box className="w-3/4">
@@ -47,10 +47,10 @@ function LoginComponent({ authTypeChange, errorState }: TSignInProps) {
             control={control}
             errors={errors}
             name="password"
-            label="password"
-            placeholder="Enter your password"
+            label="Password"
+            placeholder="enter your password"
             type="password"
-            variant="standard"
+            variant="outlined"
           />
         </Box>
         <Box className="w-3/4 mx-auto text-right">

@@ -23,7 +23,6 @@ export interface IUiInputTextFieldProps
 }
 
 export const UiInputTextField: React.FC<IUiInputTextFieldProps> = ({
-  style,
   label,
   name,
   id,
@@ -46,11 +45,7 @@ export const UiInputTextField: React.FC<IUiInputTextFieldProps> = ({
         type={type}
         fullWidth
         error={error}
-        helperText={undefined}
         onChange={onChange}
-        /* InputLabelProps={{
-          style: { top: '-0.9rem' },
-        }} */
       />
       {helperText && (
         <Box

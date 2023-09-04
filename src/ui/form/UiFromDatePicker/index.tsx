@@ -21,6 +21,9 @@ export function UiFormDatePicker<TFormType extends FieldValues, TName extends Fi
 ) {
   const { label} = props;
   const error = get(props.errors || {}, props.name);
+  console.log(props);
+  console.log(error);
+  
   return (
     <Controller
       name={props.name}

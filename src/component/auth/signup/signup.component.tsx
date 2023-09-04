@@ -32,11 +32,11 @@ function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
       <UiLabelField
         component="label"
         title="New Registration"
-        className="text-xl mt-4"
+        className="text-xl my-4"
       />
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-2 justify-center items-center w-full"
+        className="flex flex-col gap-3 justify-center items-center w-full mb-2"
       >
         <Box className="w-3/4">
           <UiFormTextField
@@ -44,8 +44,8 @@ function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
             errors={errors}
             name="username"
             label="Username"
-            placeholder="Enter your username"
-            variant="standard"
+            placeholder="enter your username"
+            variant="outlined"
           />
         </Box>
         <Box className="w-3/4">
@@ -56,7 +56,7 @@ function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
             label="Email"
             placeholder="enter your email"
             type="email"
-            variant="standard"
+            variant="outlined"
           />
         </Box>
         <Box className="w-3/4">
@@ -64,29 +64,17 @@ function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
             control={control}
             errors={errors}
             name="gender"
-            variant="standard"
-            label="Gender"
+            variant="outlined"
+            label="Select gender"
             options={enumToList(EGENDER)}
           />
         </Box>
         <Box className="w-3/4">
-          {/* <UiFormTextField
-            control={control}
-            errors={errors}
-            name="age"
-            label="D.O.B"
-            placeholder=""
-            type="date"
-            variant="standard"
-          /> */}
-
           <UiFormDatePicker
             control={control}
             errors={errors}
             name="age"
             label="D.O.B"
-            variant="standard"
-            fullWidth
           />
         </Box>
 
@@ -98,7 +86,7 @@ function SignupComponent({ authTypeChange, errorState }: TSignUpProps) {
             label="Password"
             placeholder="enter your password"
             type="password"
-            variant="standard"
+            variant="outlined"
           />
         </Box>
 

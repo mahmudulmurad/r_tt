@@ -4,6 +4,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { customeStyle } from "./selectStyle";
 
 type IUiOptions = {
   id: string | number;
@@ -64,6 +65,7 @@ export function UiSelectFiled(props: IUiSelectFieldProps) {
         <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
+          sx={customeStyle}
           id="demo-simple-select"
           value={value === null ? "" : value}
           label={label}
